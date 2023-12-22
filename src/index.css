@@ -66,3 +66,33 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+/* .widecolumn {
+  width: 20%;
+}
+
+.skinnycolumn{
+  width: 10%;
+} */
+
+
+table {
+  width: 90vw;
+  
+}
+
+table, td, th {
+  border: 1px solid cyan;
+  
+}
+
+.OffenseAddButton {
+  margin: auto;
+}
+.offensebutton{
+  background-color: teal;
+  border: 1px groove aqua;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
