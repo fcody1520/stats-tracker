@@ -6,23 +6,42 @@ export default function OffenseRow (props){
     
     const YPC = props.yards / props.receptions
     
+    function handleOffEditClick(){
+        setIsEditing(!isEditing)
+    }
+// 1:55:23 in zoom video 
     return (
-        <>
+        <> 
             { isEditing
-                ? <>
-                <OffEditSaveButton/>
-                <OffNameEditingField/>
-                <RecEditingField/>
-                <YardsEditingField/>
-                <TDEditingField/>
-                <DropsEditingField/>
-                <ConversionEditingField/>
-            </>
+                ? <tr>
+                    <td>
+                    <OffEditSaveButton/>
+                    </td>
+                    <td>
+                    <OffNameEditingField/>
+                    </td>
+                    <td>
+                    <RecEditingField/>
+                    </td>
+                    <td>
+                    <YardsEditingField/>
+                    </td>
+                    <td>
+                    <TDEditingField/>
+                    </td>
+                    <td>
+                    <DropsEditingField/>
+                    </td>
+                    <td>
+                    <ConversionEditingField/>
+                    </td>
+            </tr>
                 :  
-                <>
                     <tr>
                         <td className={"fatcolumn"}>
-                            <button className={"offensebutton"}>Edit</button>
+                            <button className={"offensebutton"}
+                            onClick={handleOffEditClick}
+                            >Edit</button>
                             <button className={"offensebutton"}>Delete</button>
                         </td>
                         <td className={"fatcolumn"}>
@@ -47,8 +66,6 @@ export default function OffenseRow (props){
                             {props.conversions}
                         </td>
                     </tr>
-                    
-                </>
             }
         </>
     )
