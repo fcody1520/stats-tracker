@@ -18,22 +18,36 @@ export default function OffenseRow (props){
                         <OffEditSaveButton/>
                     </td>
                     <td>
-                        <OffNameEditingField/>
+                        <OffNameEditingField
+                        name={props.name}
+                        />
                     </td>
                     <td>
-                        <RecEditingField/>
+                        <RecEditingField
+                        receptions={props.receptions}
+                        />
                     </td>
                     <td>
-                        <YardsEditingField/>
+                        <YardsEditingField
+                        yards={props.yards}
+                        />
                     </td>
                     <td>
-                        <TDEditingField/>
+                        Calculating...
                     </td>
                     <td>
-                        <DropsEditingField/>
+                        <TDEditingField
+                        touchdowns={props.touchdowns}
+                        />
                     </td>
                     <td>
-                        <ConversionEditingField/>
+                        <DropsEditingField
+                        drops={props.drops}
+                        />
+                    </td>
+                    <td>
+                        <ConversionEditingField
+                        conversions={props.conversions}/>
                     </td>
             </tr>
                 :  
@@ -79,50 +93,99 @@ function OffEditSaveButton(){
     )
 }
 
-function OffNameEditingField(){
+function OffNameEditingField(props){
+    
+    const [currentValue, setCurrentValue] = useState(props.name)
+    
+    function onChangeHandler(evt){
+        setCurrentValue(evt.target.value)
+
+    }
+
+
     return (
         <>
-            edit name
+            <input type="text" value={currentValue} onChange={onChangeHandler}/>
         </>
     )
 }
 
-function RecEditingField(){
+function RecEditingField(props){
+    const [currentValue, setCurrentValue] = useState(props.receptions)
+    
+    function onChangeHandler(evt){
+        setCurrentValue(evt.target.value)
+        
+    }
+
+
     return (
         <>
-            edit receptions
+            <input className={"numnum"} type={"number"} value={currentValue} onChange={onChangeHandler}/>
         </>
     )
 }
 
-function YardsEditingField(){
+function YardsEditingField(props){
+    const [currentValue, setCurrentValue] = useState(props.yards)
+    
+    function onChangeHandler(evt){
+        setCurrentValue(evt.target.value)
+        
+    }
+
+
     return (
         <>
-            edit yards
+            <input className={"numnum"} type={"number"} value={currentValue} onChange={onChangeHandler}/>
         </>
     )
 }
 
-function TDEditingField(){
+function TDEditingField(props){
+    const [currentValue, setCurrentValue] = useState(props.touchdowns)
+    
+    function onChangeHandler(evt){
+        setCurrentValue(evt.target.value)
+        
+    }
+
+
     return (
         <>
-            edit touchdowns
+            <input className={"numnum"} type={"number"} value={currentValue} onChange={onChangeHandler}/>
         </>
-    )  
+    ) 
 }
 
-function DropsEditingField(){
+function DropsEditingField(props){
+    const [currentValue, setCurrentValue] = useState(props.drops)
+    
+    function onChangeHandler(evt){
+        setCurrentValue(evt.target.value)
+        
+    }
+
+
     return (
         <>
-            edit drops
+            <input className={"numnum"} type={"number"} value={currentValue} onChange={onChangeHandler}/>
         </>
-    )  
+    )   
 }
 
-function ConversionEditingField(){
+function ConversionEditingField(props){
+    const [currentValue, setCurrentValue] = useState(props.conversions)
+    
+    function onChangeHandler(evt){
+        setCurrentValue(evt.target.value)
+        
+    }
+
+
     return (
         <>
-            edit conversions
+            <input className={"numnum"} type={"number"} value={currentValue} onChange={onChangeHandler}/>
         </>
     )   
 }
