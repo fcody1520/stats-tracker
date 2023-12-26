@@ -3,6 +3,15 @@ import { useState } from "react"
 export default function OffenseRow (props){
     
     let [isEditing, setIsEditing] = useState(false)
+    let [newData, setNewData] = useState({
+        name: props.name,
+        receptions: props.receptions,
+        yards: props.yards,
+        touchdowns: props.touchdowns,
+        drops: props.drops,
+        conversions: props.conversions
+    })
+
     
     const YPC = props.yards / props.receptions
     
@@ -19,16 +28,22 @@ export default function OffenseRow (props){
                     </td>
                     <td>
                         <OffNameEditingField
+                        setNewData={setNewData}
+                        newData={newData}
                         name={props.name}
                         />
                     </td>
                     <td>
                         <RecEditingField
+                        setNewData={setNewData}
+                        newData={newData}
                         receptions={props.receptions}
                         />
                     </td>
                     <td>
                         <YardsEditingField
+                        setNewData={setNewData}
+                        newData={newData}
                         yards={props.yards}
                         />
                     </td>
@@ -37,16 +52,22 @@ export default function OffenseRow (props){
                     </td>
                     <td>
                         <TDEditingField
+                        setNewData={setNewData}
+                        newData={newData}
                         touchdowns={props.touchdowns}
                         />
                     </td>
                     <td>
                         <DropsEditingField
+                        setNewData={setNewData}
+                        newData={newData}
                         drops={props.drops}
                         />
                     </td>
                     <td>
                         <ConversionEditingField
+                        setNewData={setNewData}
+                        newData={newData}
                         conversions={props.conversions}/>
                     </td>
             </tr>
@@ -99,7 +120,7 @@ function OffNameEditingField(props){
     
     function onChangeHandler(evt){
         setCurrentValue(evt.target.value)
-
+        props.setNewData({...props.newData, name: evt.target.value})
     }
 
 
@@ -115,7 +136,7 @@ function RecEditingField(props){
     
     function onChangeHandler(evt){
         setCurrentValue(evt.target.value)
-        
+        props.setNewData({...props.newData, receptions: evt.target.value})
     }
 
 
@@ -131,7 +152,7 @@ function YardsEditingField(props){
     
     function onChangeHandler(evt){
         setCurrentValue(evt.target.value)
-        
+        props.setNewData({...props.newData, yards: evt.target.value})
     }
 
 
@@ -147,7 +168,7 @@ function TDEditingField(props){
     
     function onChangeHandler(evt){
         setCurrentValue(evt.target.value)
-        
+        props.setNewData({...props.newData, touchdowns: evt.target.value})
     }
 
 
@@ -163,7 +184,7 @@ function DropsEditingField(props){
     
     function onChangeHandler(evt){
         setCurrentValue(evt.target.value)
-        
+        props.setNewData({...props.newData, drops: evt.target.value})
     }
 
 
@@ -179,7 +200,7 @@ function ConversionEditingField(props){
     
     function onChangeHandler(evt){
         setCurrentValue(evt.target.value)
-        
+        props.setNewData({...props.newData, conversions: evt.target.value})
     }
 
 
