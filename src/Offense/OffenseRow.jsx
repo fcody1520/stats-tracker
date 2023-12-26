@@ -12,7 +12,7 @@ export default function OffenseRow (props){
         conversions: props.conversions
     })
 
-    
+    // 34:59 in video
     const YPC = props.yards / props.receptions
     
     function handleOffEditClick(){
@@ -24,7 +24,12 @@ export default function OffenseRow (props){
             { isEditing
                 ? <tr>
                     <td>
-                        <OffEditSaveButton/>
+                        <OffEditSaveButton
+                        newData={newData}
+                        id={props.id}
+                        setOffTableDataRow={props.setOffTableDataRow}
+                        setIsEditing={setIsEditing}
+                        />
                     </td>
                     <td>
                         <OffNameEditingField
@@ -106,10 +111,18 @@ export default function OffenseRow (props){
     )
 }
 
-function OffEditSaveButton(){
+function OffEditSaveButton(props){
+    
+   const {id, newData, setOffTableDataRow, setIsEditing} = props 
+   
+   function onSaveClick(){
+    setOffTableDataRow(id,newData)
+    setIsEditing(false)
+   }
+    
     return (
         <>
-            <button>Save</button>
+            <button onClick={onSaveClick}>Save</button>
         </>
     )
 }
