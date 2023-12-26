@@ -9,31 +9,31 @@ export default function OffenseRow (props){
     function handleOffEditClick(){
         setIsEditing(!isEditing)
     }
-// 1:55:23 in zoom video 
+
     return (
         <> 
             { isEditing
                 ? <tr>
                     <td>
-                    <OffEditSaveButton/>
+                        <OffEditSaveButton/>
                     </td>
                     <td>
-                    <OffNameEditingField/>
+                        <OffNameEditingField/>
                     </td>
                     <td>
-                    <RecEditingField/>
+                        <RecEditingField/>
                     </td>
                     <td>
-                    <YardsEditingField/>
+                        <YardsEditingField/>
                     </td>
                     <td>
-                    <TDEditingField/>
+                        <TDEditingField/>
                     </td>
                     <td>
-                    <DropsEditingField/>
+                        <DropsEditingField/>
                     </td>
                     <td>
-                    <ConversionEditingField/>
+                        <ConversionEditingField/>
                     </td>
             </tr>
                 :  
@@ -74,7 +74,7 @@ export default function OffenseRow (props){
 function OffEditSaveButton(){
     return (
         <>
-        
+            <button>Save</button>
         </>
     )
 }
@@ -82,7 +82,7 @@ function OffEditSaveButton(){
 function OffNameEditingField(){
     return (
         <>
-        
+            edit name
         </>
     )
 }
@@ -90,7 +90,7 @@ function OffNameEditingField(){
 function RecEditingField(){
     return (
         <>
-        
+            edit receptions
         </>
     )
 }
@@ -98,7 +98,7 @@ function RecEditingField(){
 function YardsEditingField(){
     return (
         <>
-        
+            edit yards
         </>
     )
 }
@@ -106,7 +106,7 @@ function YardsEditingField(){
 function TDEditingField(){
     return (
         <>
-        
+            edit touchdowns
         </>
     )  
 }
@@ -114,7 +114,7 @@ function TDEditingField(){
 function DropsEditingField(){
     return (
         <>
-        
+            edit drops
         </>
     )  
 }
@@ -122,7 +122,7 @@ function DropsEditingField(){
 function ConversionEditingField(){
     return (
         <>
-        
+            edit conversions
         </>
     )   
 }
