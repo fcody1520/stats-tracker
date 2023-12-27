@@ -11,7 +11,7 @@ export default function OffenseRow (props){
         touchdowns: props.touchdowns,
         drops: props.drops,
         conversions: props.conversions,
-        id: <props className="id"></props>
+        id: props.id
     })
 
     // 34:59 in video
