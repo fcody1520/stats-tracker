@@ -1,4 +1,5 @@
 import { useState } from "react"
+import axios from 'axios'
 
 export default function OffenseRow (props){
     
@@ -9,7 +10,8 @@ export default function OffenseRow (props){
         yards: props.yards,
         touchdowns: props.touchdowns,
         drops: props.drops,
-        conversions: props.conversions
+        conversions: props.conversions,
+        id: <props className="id"></props>
     })
 
     // 34:59 in video
@@ -27,7 +29,7 @@ export default function OffenseRow (props){
                         <OffEditSaveButton
                         newData={newData}
                         id={props.id}
-                        setOffTableDataRow={props.setOffTableDataRow}
+                        setTableData={props.setTableData}
                         setIsEditing={setIsEditing}
                         />
                     </td>
@@ -113,12 +115,19 @@ export default function OffenseRow (props){
 
 function OffEditSaveButton(props){
     
-   const {id, newData, setOffTableDataRow, setIsEditing} = props 
-   
-   function onSaveClick(){
-    setOffTableDataRow(id,newData)
-    setIsEditing(false)
-   }
+   const {id, newData, setTableData, setIsEditing} = props 
+//     1:22:45
+   function onSaveClick() {
+    axios.put(`/edit-player/${id}`, newData)
+        .then((response) => {
+            console.log(response.data);
+            setTableData(response.data);
+            setIsEditing(false);
+        })
+        .catch((error) => {
+            console.error("Error updating player:", error);
+        });
+    } 
     
     return (
         <>

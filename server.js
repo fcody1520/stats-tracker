@@ -38,6 +38,11 @@ let offenseDB = [
 app.put('/edit-player/:id', (req, res) => {
     let id = +req.params.id
     let editedPlayer = req.body
+    editedPlayer.receptions = +editedPlayer.receptions
+    editedPlayer.yards = +editedPlayer.yards
+    editedPlayer.touchdowns = +editedPlayer.touchdowns
+    editedPlayer.drops = +editedPlayer.drops
+    editedPlayer.conversions = +editedPlayer.conversions
 
     for(let i = 0; i< offenseDB.length; i++){
         if (offenseDB[i].id === id){
@@ -45,6 +50,7 @@ app.put('/edit-player/:id', (req, res) => {
             break
         }
     }
+    console.log(offenseDB);
 res.status(200).send(offenseDB)
 
 })

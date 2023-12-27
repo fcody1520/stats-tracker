@@ -38,16 +38,7 @@ export default function OffenseTable(){
 
     const [tableData, setTableData] = useState(data)
 
-    function setOffTableDataRow(id, newRowObj){
-        let newOffTableData = structuredClone(tableData)
-        for(let i = 0; i< newOffTableData.length; i++){
-            if (newOffTableData[i].id === id){
-                newOffTableData.splice(i, 1, newRowObj)
-                break
-            }
-        }
-        setTableData(newOffTableData)
-    }
+    
 
     return (
         <>
@@ -65,7 +56,7 @@ export default function OffenseTable(){
                                     drops={playerObj.drops}
                                     conversions={playerObj.conversions}
                                     id={playerObj.id}
-                                    setOffTableDataRow={setOffTableDataRow}
+                                    setTableData={setTableData}
                                 />
                             })
                         }
