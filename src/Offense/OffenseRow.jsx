@@ -14,7 +14,7 @@ export default function OffenseRow (props){
         id: props.id
     })
 
-    // 34:59 in video
+
     const YPC = props.yards / props.receptions
     
     function handleOffEditClick(){
@@ -117,17 +117,16 @@ function OffEditSaveButton(props){
     
    const {id, newData, setTableData, setIsEditing} = props 
 //     1:22:45
-   function onSaveClick() {
-    axios.put(`/edit-player/${id}`, newData)
-        .then((response) => {
-            console.log(response.data);
-            setTableData(response.data);
-            setIsEditing(false);
-        })
-        .catch((error) => {
-            console.error("Error updating player:", error);
-        });
-    } 
+async function onSaveClick() {
+    try {
+        const response = await axios.put(`/edit-player/${id}`, newData);
+        setTableData(response.data);
+        setIsEditing(false);
+    } catch (error) {
+        console.error("Error updating player:", error);
+    }
+}
+ 
     
     return (
         <>

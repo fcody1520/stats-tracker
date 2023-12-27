@@ -5,6 +5,8 @@ const app = express()
 
 app.use(express.json())
 
+let newOffGlobalId = 4
+
 let offenseDB = [
     {
         id: 1,
@@ -50,8 +52,7 @@ app.put('/edit-player/:id', (req, res) => {
             break
         }
     }
-    console.log(offenseDB);
-res.status(200).send(offenseDB)
+    res.status(200).send(offenseDB)
 
 })
 
