@@ -21,6 +21,17 @@ export default function OffenseRow (props){
         setIsEditing(!isEditing)
     }
 
+    async function handleOffDeleteClick() {
+        try {
+            let response = await axios.delete(`/offensive-players/${props.id}`);
+            props.setTableData(response.data);
+        } catch (error) {
+            console.error('Error deleting offensive player:', error);
+        
+        }
+    }
+    
+
     return (
         <> 
             { isEditing
@@ -84,7 +95,7 @@ export default function OffenseRow (props){
                             <button className={"offensebutton"}
                             onClick={handleOffEditClick}
                             >Edit</button>
-                            <button className={"offensebutton"}>Delete</button>
+                            <button onClick={handleOffDeleteClick} className={"offensebutton"}>Delete</button>
                         </td>
                         <td className={"fatcolumn"}>
                             {props.name}

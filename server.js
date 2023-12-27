@@ -56,8 +56,22 @@ app.put('/edit-player/:id', (req, res) => {
             break
         }
     }
+
     res.status(200).send(offenseDB)
 
+})
+
+app.delete('/offensive-players/:id', (req,res) => {
+    let id = +req.params.id
+
+    for(let i = 0; i< offenseDB.length; i++){
+        if (offenseDB[i].id === id){
+            offenseDB.splice(i, 1)
+            break
+        }
+    }
+
+    res.status(200).send(offenseDB)
 })
 
 
