@@ -22,14 +22,20 @@ export default function OffenseRow (props){
     }
 
     async function handleOffDeleteClick() {
-        try {
-            let response = await axios.delete(`/offensive-players/${props.id}`);
-            props.setTableData(response.data);
-        } catch (error) {
-            console.error('Error deleting offensive player:', error);
-        
+        const userConfirmed = window.confirm('Are you sure you want to delete this offensive player?');
+    
+        if (userConfirmed) {
+            try {
+                let response = await axios.delete(`/offensive-players/${props.id}`);
+                props.setTableData(response.data);
+            } catch (error) {
+                console.error('Error deleting offensive player:', error);
+            }
+        } else {
+            console.log('Deletion canceled by user');
         }
     }
+    
     
 
     return (
