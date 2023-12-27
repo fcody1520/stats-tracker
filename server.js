@@ -37,6 +37,10 @@ let offenseDB = [
     }
 ]
 
+app.get('/offensive-players', (req,res) => {
+    res.status(200).send(offenseDB)
+})
+
 app.put('/edit-player/:id', (req, res) => {
     let id = +req.params.id
     let editedPlayer = req.body
