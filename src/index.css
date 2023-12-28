@@ -67,14 +67,6 @@ button:focus-visible {
   }
 }
 
-/* .widecolumn {
-  width: 20%;
-}
-
-.skinnycolumn{
-  width: 10%;
-} */
-
 
 table {
   width: 90vw;
@@ -85,12 +77,18 @@ table {
 
 
 
-.OffenseAddButton {
-  margin: auto;
-}
+
 .offensebutton{
   background-color: teal;
   border: 1px groove aqua;
+  margin-right: 5px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+}
+
+.defensebutton {
+  background-color: magenta;
+  border: 1px groove hotpink;
   margin-right: 5px;
   margin-bottom: 5px;
   margin-top: 5px;

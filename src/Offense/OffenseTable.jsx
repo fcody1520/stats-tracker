@@ -27,7 +27,7 @@ export default function OffenseTable(){
                         {
                             tableData.map((playerObj) => {
                                 return <OffenseRow
-                                key={playerObj.id}
+                                    key={playerObj.id}
                                     name={playerObj.name}
                                     receptions={playerObj.receptions}
                                     yards={playerObj.yards}

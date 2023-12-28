@@ -97,31 +97,31 @@ export default function OffenseRow (props){
             </tr>
                 :  
                     <tr>
-                        <td className={"fatcolumn"}>
+                        <td>
                             <button className={"offensebutton"}
                             onClick={handleOffEditClick}
                             >Edit</button>
                             <button onClick={handleOffDeleteClick} className={"offensebutton"}>Delete</button>
                         </td>
-                        <td className={"fatcolumn"}>
+                        <td>
                             {props.name}
                         </td>
-                        <td className={"skinnycolumn"}>
+                        <td>
                             {props.receptions}
                         </td>
-                        <td className={"skinnycolumn"}>
+                        <td>
                             {props.yards}
                         </td>
-                        <td className={"skinnycolumn"}>
+                        <td>
                             {YPC.toFixed(3)}
                         </td>
-                        <td className={"skinnycolumn"}>
+                        <td>
                             {props.touchdowns}
                         </td >
-                        <td className={"skinnycolumn"}>
+                        <td>
                             {props.drops}
                         </td>
-                        <td className={"skinnycolumn"}>
+                        <td>
                             {props.conversions}
                         </td>
                     </tr>
@@ -133,7 +133,7 @@ export default function OffenseRow (props){
 function OffEditSaveButton(props){
     
    const {id, newData, setTableData, setIsEditing} = props 
-//     1:22:45
+
 async function onSaveClick() {
     try {
         const response = await axios.put(`/edit-player/${id}`, newData);
