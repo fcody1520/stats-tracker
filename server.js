@@ -41,6 +41,17 @@ app.get('/offensive-players', (req,res) => {
     res.status(200).send(offenseDB)
 })
 
+app.post('/offensive-player', (req,res) => {
+    let newPlayer = req.body
+
+    newPlayer.id = newOffGlobalId
+    newOffGlobalId++
+
+    offenseDB.push(newPlayer)
+
+    res.status(200).send(offenseDB)
+})
+
 app.put('/edit-player/:id', (req, res) => {
     let id = +req.params.id
     let editedPlayer = req.body

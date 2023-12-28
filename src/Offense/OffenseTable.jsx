@@ -42,7 +42,9 @@ export default function OffenseTable(){
                        
                     </tbody>
             </table>
-            <OffAddButton/>
+            <OffAddButton
+                setTableData={setTableData}
+            />
         </>
     )
 }
