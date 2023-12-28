@@ -78,13 +78,12 @@ button:focus-visible {
 
 table {
   width: 90vw;
+  background-color:  gray;
+  border-radius: 15px;
   
 }
 
-table, td, th {
-  border: 1px solid cyan;
-  
-}
+
 
 .OffenseAddButton {
   margin: auto;
@@ -104,4 +103,6 @@ table, td, th {
 .addspan {
   padding: .5%;
 }
+
+
 
