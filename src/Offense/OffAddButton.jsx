@@ -59,7 +59,7 @@ export default function OffAddButton ({setTableData}){
                         <button 
                             onClick={onCancelClickHandler} 
                             className={"offensebutton"}>
-                                cancel
+                                Cancel
                         </button>
                     </span>
                     <span  className="addspan">
