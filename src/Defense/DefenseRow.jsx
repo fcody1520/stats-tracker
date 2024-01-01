@@ -20,7 +20,18 @@ export default function DefenseRow(props){
     }
 
     async function handleDefDeleteClick(){
+        const userConfirmed = window.confirm('Are you sure you want to delete this defensive player?');
 
+        if (userConfirmed){
+            try {
+                let response = await axios.delete(`/defensive-players/${props.id}`);
+                props.setTableData(response.data);
+            } catch (error) {
+                console.error('Error deleting defensive player:', error);
+            }
+        } else {
+            console.log('Deletion canceled by user');
+        }
     }
 
 
@@ -115,8 +126,24 @@ export default function DefenseRow(props){
 
 }
 
-function DefEditSaveButton(){
+function DefEditSaveButton(props){
+    const {id, newData, setTableData, setIsEditing}= props;
 
+    async function onSaveClick(){
+        try {
+            const response = await axios.put(`/edit-D-player/${id}`, newData);
+            setTableData(response.data);
+            setIsEditing(false);
+        }catch(error){
+            console.error("error updating player:", error)
+        }
+    }
+
+        return (
+            <>
+                <button onClick={onSaveClick}>Save</button>
+            </>
+        )
 }
 
 function DefNameEditingField(props){

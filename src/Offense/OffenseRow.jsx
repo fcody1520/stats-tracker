@@ -134,22 +134,22 @@ function OffEditSaveButton(props){
     
    const {id, newData, setTableData, setIsEditing} = props 
 
-async function onSaveClick() {
-    try {
-        const response = await axios.put(`/edit-player/${id}`, newData);
-        setTableData(response.data);
-        setIsEditing(false);
-    } catch (error) {
-        console.error("Error updating player:", error);
+    async function onSaveClick() {
+        try {
+            const response = await axios.put(`/edit-O-player/${id}`, newData);
+            setTableData(response.data);
+            setIsEditing(false);
+        } catch (error) {
+            console.error("Error updating player:", error);
+        }
     }
-}
- 
     
-    return (
-        <>
-            <button onClick={onSaveClick}>Save</button>
-        </>
-    )
+        
+        return (
+            <>
+                <button onClick={onSaveClick}>Save</button>
+            </>
+        )
 }
 
 function OffNameEditingField(props){

@@ -10,7 +10,13 @@ export default function DefenseTable(){
 
     const [tableData,setTableData] = useState([])
 
-    // useEffect goes here
+
+    useEffect(() => {
+        axios.get('/defensive-players')
+        .then((response) => {
+            setTableData(response.data)
+        })
+    }, [])
 
     return (
         <>

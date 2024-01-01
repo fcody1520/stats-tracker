@@ -52,7 +52,7 @@ app.post('/offensive-player', (req,res) => {
     res.status(200).send(offenseDB)
 })
 
-app.put('/edit-player/:id', (req, res) => {
+app.put('/edit-O-player/:id', (req, res) => {
     let id = +req.params.id
     let editedPlayer = req.body
     editedPlayer.receptions = +editedPlayer.receptions
