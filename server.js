@@ -151,7 +151,7 @@ app.delete('/offensive-players/:id', (req,res) => {
 })
 
 app.delete('/defensive-players/:id', (req, res) => {
-    let id = req.params.id
+    let id = +req.params.id
 
     for(let i = 0; i< defenseDB.length; i++){
         if (defenseDB[i].id === id){
