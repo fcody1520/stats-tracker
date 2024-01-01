@@ -6,6 +6,7 @@ const app = express()
 app.use(express.json())
 
 let newOffGlobalId = 4
+let newDefGlobalId = 4
 
 let offenseDB = [
     {
@@ -37,8 +38,43 @@ let offenseDB = [
     }
 ]
 
+let defenseDB = [
+    {
+        id: 1,
+        name: 'Cody F(REPLACE ME)',
+        flagpulls: 39,
+        sacks: 2,
+        interceptions: 3,
+        knockdowns: 17,
+        defTDs: 2
+    },
+    {
+        id: 2,
+        name: 'Timmah(REPLACE ME)',
+        flagpulls: 46,
+        sacks: 8,
+        interceptions: 1,
+        knockdowns: 9,
+        defTDs: 2
+    },
+    {
+        id: 3,
+        name: 'Billy Joe(REPLACE ME)',
+        flagpulls: 75,
+        sacks: 1,
+        interceptions: 5,
+        knockdowns: 14,
+        defTDs: 4
+    }
+]
+
+
 app.get('/offensive-players', (req,res) => {
     res.status(200).send(offenseDB)
+})
+
+app.get('/defensive-players', (req,res) => {
+    res.status(200).send(defenseDB)
 })
 
 app.post('/offensive-player', (req,res) => {
@@ -50,6 +86,17 @@ app.post('/offensive-player', (req,res) => {
     offenseDB.push(newPlayer)
 
     res.status(200).send(offenseDB)
+})
+
+app.post('/defensive-player', (req,res) => {
+    let newPlayer = req.body
+
+    newPlayer.id = newDefGlobalId
+    newDefGlobalId++
+
+    defenseDB.push(newPlayer)
+
+    res.status(200).send(defenseDB)
 })
 
 app.put('/edit-O-player/:id', (req, res) => {
@@ -69,7 +116,25 @@ app.put('/edit-O-player/:id', (req, res) => {
     }
 
     res.status(200).send(offenseDB)
+})
 
+app.put('/edit-D-player/:id', (req, res)=>{
+    let id = +req.params.id
+    let editedPlayer = req.body
+    editedPlayer.flagpulls = +editedPlayer.flagpulls
+    editedPlayer.sacks = +editedPlayer.sacks
+    editedPlayer.interceptions = +editedPlayer.interceptions
+    editedPlayer.knockdowns = +editedPlayer.knockdowns
+    editedPlayer.defTDs = +editedPlayer.defTDs
+
+    for(let i = 0; i< defenseDB.length; i++){
+        if (defenseDB[i].id === id){
+            defenseDB.splice(i, 1, editedPlayer)
+            break
+        }
+    }
+
+    res.status(200).send(defenseDB)
 })
 
 app.delete('/offensive-players/:id', (req,res) => {
@@ -83,6 +148,19 @@ app.delete('/offensive-players/:id', (req,res) => {
     }
 
     res.status(200).send(offenseDB)
+})
+
+app.delete('/defensive-players/:id', (req, res) => {
+    let id = req.params.id
+
+    for(let i = 0; i< defenseDB.length; i++){
+        if (defenseDB[i].id === id){
+            defenseDB.splice(i, 1)
+            break
+        }
+    }
+
+    res.status(200).send(defenseDB)
 })
 
 

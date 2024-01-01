@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 
-export default function DefenseAddButton(){
+export default function DefenseAddButton({setTableData}){
     
     const [isMakingNewDefRow, setIsMakingNewDefRow] = useState(false)
     const [nameInput, setNameInput] = useState('')
@@ -30,7 +30,17 @@ export default function DefenseAddButton(){
             defTDs: +defTDsInput
         }
 
-        // axios here
+        axios.post('/defensive-player', defMaBod)
+        .then((response) => {
+            setTableData(response.data)
+            setIsMakingNewDefRow(false)
+            setNameInput('')
+            setFlagpullsInput('')
+            setSacksInput('')
+            setInterceptionsInput('')
+            setKnockdownsInput('')
+            setDefTDsInput('')
+        })
     }
 
 

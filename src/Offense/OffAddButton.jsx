@@ -32,7 +32,6 @@ export default function OffAddButton ({setTableData}){
 
         axios.post('/offensive-player', offMaBod)
         .then((response) => {
-            console.log(response.data);
             setTableData(response.data)
             setIsMakingNewOffRow(false)
             setNameInput('')
